@@ -1,0 +1,22 @@
+{
+	"name" : "tiny-asset-pipeline",
+	"main" : "./index.js",
+	"bin"  : { "tiny-asset-pipeline": "./bin/main" },
+	"description" : "tiny-asset-pipeline is a node library for compiling and serving web assets. It features dependency management for JavaScript and CSS assets, as well as Less.",
+	"author" : {
+		"name" 	: "dongyuwei",
+		"email" : "newdongyuwei@gmail.com",
+		"url" 	: "http://session.im"
+	},
+	"repository": {
+		"type"	: "git",
+		"url"	: "https://github.com/dongyuwei/tiny-asset-pipeline.git"
+	},
+	"version" : "1.0.0",
+	"dependencies" : {
+		"uglify-js"  	: "1.3.4",
+		"argsparser" 	: "0.0.6",
+		"mkdirp"  		: "0.3.4",
+		"express" 		: "3.0.3"
+ 	}
+}

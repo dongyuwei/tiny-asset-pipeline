@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs = require('fs');
+var os = require('os');
+var release = require('../index.js');
+var conf = require("argsparser").parse();
+
+var spawn = require('child_process').spawn;
+
+if(process.argv.length === 2){
+    console.error('#package project#: tiny-asset-pipeline -from fromDir -to toDir [-verbose or -v] [-noRewriteFileName]');
+    console.error('#start    server#: tiny-asset-pipeline -start  [-port 8888] [-root yourDocumentRoot]');
+    console.error('#stop     server#: tiny-asset-pipeline -stop');
+    process.exit(1);
+}
+
+var port = parseInt(conf['-port'], 10) || 8888;
+var pid = path.join(os.tmpDir(), port + '.node_pid');
+if(conf['-start'] || conf['-restart']){
+    kill();
+
+    var ps = spawn('node',[path.resolve(__dirname,'..','lib','server','httpd.js'),
+                   '-port',port,
+                   '-root',conf['-root']]);
+    
+    ps.stdout.on('data', function (data) {
+      console.log(data.toString('utf-8'));
+    });
+
+    ps.stderr.on('data', function (data) {
+      console.log(data.toString('utf-8'));
+    });
+
+    return;
+}
+if(conf['-stop']){
+    kill();
+    process.exit(0);
+}
+
+function kill(){
+    if(fs.existsSync(pid)){
+        try{
+            process.kill(fs.readFileSync(pid,'utf-8'));
+
+        }catch(e){
+
+        }
+        fs.unlinkSync(pid);
+    }
+}
+release(conf);
