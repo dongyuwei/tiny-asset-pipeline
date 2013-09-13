@@ -9,8 +9,8 @@ var conf = require("argsparser").parse();
 var spawn = require('child_process').spawn;
 
 if(process.argv.length === 2){
-    console.error('#package project#: tiny-asset-pipeline -from fromDir -to toDir [-verbose or -v] [-noRewriteFileName]');
-    console.error('#start    server#: tiny-asset-pipeline -start  [-port 8888] [-root yourDocumentRoot]');
+    console.error('#package project#: tiny-asset-pipeline -from sourceDirectoty -to destinationDirectoty [-verbose or -v] [-noRewriteFileName]');
+    console.error('#start    server#: tiny-asset-pipeline -start  [-port 8888] [-root assetsRootDirectoty]');
     console.error('#stop     server#: tiny-asset-pipeline -stop');
     process.exit(1);
 }

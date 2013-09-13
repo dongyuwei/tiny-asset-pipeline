@@ -17,8 +17,7 @@ var conf = require("argsparser").parse();
 function release(conf){
     function showUsage() {
         //default will rewrite static file(.js, .css, img,fonts)'s name 
-        console.error('Usage: node index.js -from fromDir -to toDir  [-verbose or -v] ' + 
-                      ' [-noRewriteFileName]');
+        console.error('Usage: node index.js  -from sourceDirectoty -to destinationDirectoty [-verbose or -v] [-noRewriteFileName]');
         process.exit(1);
     }
 
