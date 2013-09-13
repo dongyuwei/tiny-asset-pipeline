@@ -18,6 +18,6 @@ features:
 usage:
 =====
 1. for **development env** , start server(as assets pipeline server, compile .less, concat .css and .js *per request* ): `tiny-asset-pipeline -start  [-port 8888] [-root yourAssetsRoot]`
-2. for **production env** , batch process before deploy assets to *production env* : `tiny-asset-pipeline -from sourceDir -to destinationDir [-verbose or -v] [-noRewriteFileName]`
+2. for **production env** , batch process before deploy assets to *production env* : `tiny-asset-pipeline -from sourceDir -to destinationDir [-verbose or -v] [-noRewriteFileName]` . Finally it will generate a **md5Mapping.json** under the root of destination directoty, you can read the content to find the md5 hash of a special file.
 
 
