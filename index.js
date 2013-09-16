@@ -50,7 +50,6 @@ function publish(conf,from,to) {
 
     var files = walk(from),
         jsList = files.js,
-        cssList = files.css,
         lessList = files.less,
         otherFiles = files.other;
 
