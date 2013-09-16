@@ -3,10 +3,9 @@
 var path = require('path');
 var fs = require('fs');
 var os = require('os');
+var daemon = require('daemon');
 var release = require('../index.js');
 var conf = require("argsparser").parse();
-
-var spawn = require('child_process').spawn;
 
 if(process.argv.length === 2){
     console.error('#package project#: tiny-asset-pipeline -from sourceDirectoty -to destinationDirectoty [-mappingFile /tmp/md5_mapping.json] [-verbose or -v] [-noRewriteFileName]');
@@ -20,18 +19,7 @@ var pid = path.join(os.tmpDir(), port + '.node_pid');
 if(conf['-start'] || conf['-restart']){
     kill();
 
-    var ps = spawn('node',[path.resolve(__dirname,'..','lib','server','httpd.js'),
-                   '-port',port,
-                   '-root',conf['-root']]);
-    
-    ps.stdout.on('data', function (data) {
-      console.log(data.toString('utf-8'));
-    });
-
-    ps.stderr.on('data', function (data) {
-      console.log(data.toString('utf-8'));
-    });
-
+    daemon.daemon(path.resolve(__dirname,'..','lib','server','httpd.js'), ['-port',port,'-root',conf['-root']])
     return;
 }
 if(conf['-stop']){
@@ -45,7 +33,7 @@ function kill(){
             process.kill(fs.readFileSync(pid,'utf-8'));
 
         }catch(e){
-
+            console.error(e);
         }
         fs.unlinkSync(pid);
     }
