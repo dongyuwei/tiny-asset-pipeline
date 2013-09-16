@@ -17,7 +17,7 @@ var conf = require("argsparser").parse();
 function release(conf){
     function showUsage() {
         //default will rewrite static file(.js, .css, img,fonts)'s name 
-        console.error('Usage: node index.js  -from sourceDirectoty -to destinationDirectoty [-verbose or -v] [-noRewriteFileName]');
+        console.error('Usage: node index.js  -from sourceDirectoty -to destinationDirectoty [-mappingFile /tmp/md5_mapping.json] [-verbose or -v] [-noRewriteFileName]');
         process.exit(1);
     }
 
@@ -75,7 +75,7 @@ function publish(conf,from,to) {
     pkgLess(from, to, lessList, conf);
 
     //5 write md5Mapping.json
-    writeMappingFile(from, to);
+    writeMappingFile(from, to,conf['-mappingFile']);
 
     console.log('######## Package SUCCESS! ###########');
     console.timeEnd('Package-Time');
