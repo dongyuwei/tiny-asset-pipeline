@@ -33,7 +33,7 @@ function kill(){
             process.kill(fs.readFileSync(pid,'utf-8'));
 
         }catch(e){
-            console.error(e);
+            
         }
         fs.unlinkSync(pid);
     }

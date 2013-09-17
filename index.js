@@ -34,9 +34,12 @@ function release(conf){
         conf['-root'] = from;
     }
 
-    if (!to || !fs.existsSync(to)) {
+    if (!to) {
         console.log('need toDir');
         showUsage();
+    }
+    if(!fs.existsSync(to)){
+        mkdirp.sync(to);
     }
     to = path.join(path.resolve(to), path.sep);
 
