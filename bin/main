@@ -31,11 +31,10 @@ function kill(){
     if(fs.existsSync(pid)){
         try{
             process.kill(fs.readFileSync(pid,'utf-8'));
-
+            fs.unlinkSync(pid);
         }catch(e){
             
         }
-        fs.unlinkSync(pid);
     }
 }
 release(conf);
