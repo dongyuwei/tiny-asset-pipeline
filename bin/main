@@ -19,7 +19,13 @@ var pid = path.join(os.tmpDir(), port + '.node_pid');
 if(conf['-start'] || conf['-restart']){
     kill();
 
-    daemon.daemon(path.resolve(__dirname,'..','lib','server','httpd.js'), ['-port',port,'-root',conf['-root']])
+    var stdout = pid + '_stdout.log', stderr = pid + '_stderr.log';
+    console.log(">>>tiny-asset-pipeline's stdout log: ", stdout);
+    console.log(">>>tiny-asset-pipeline's stderr log: ", stderr);
+    daemon.daemon(path.resolve(__dirname,'..','lib','server','httpd.js'), ['-port',port,'-root',conf['-root']],{
+        stdout : fs.openSync(stdout, 'w'),
+        stderr : fs.openSync(stderr, 'w')
+    })
     return;
 }
 if(conf['-stop']){
