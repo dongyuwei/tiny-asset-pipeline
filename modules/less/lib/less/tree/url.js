@@ -43,16 +43,43 @@
                 }
                 val.value = rootpath + val.value;
             }
-            
-            var config = this.env.files._config_;
-            var img = absolute(this.env.filename, val.value);
-            val.value = relative(config['_root_less_'], this.env.filename, val.value);
+
+            var config = this.env.files._config_, img, arr;
+            if(val.value.indexOf('?') !== -1){
+                arr = val.value.split('?');
+                img = absolute(this.env.filename, arr[0]);
+                val.value = relative(config['_root_less_'], this.env.filename, arr[0]) + "?" + arr[1];
+            }else if(val.value.indexOf('#') !== -1){
+                arr = val.value.split('#');
+                img = absolute(this.env.filename, arr[0]);
+                val.value = relative(config['_root_less_'], this.env.filename, arr[0]) + "#" + arr[1];
+            }else{
+                img = absolute(this.env.filename, val.value);
+                val.value = relative(config['_root_less_'], this.env.filename, val.value);
+            }
             if(md5Mapping[img]){
                 if(config.noRewriteFileName){
-                    val.value = val.value + '?v=' + md5Mapping[img];
+                    if(val.value.indexOf('?') !== -1){
+                        val.value = val.value + '&v=' + md5Mapping[img];
+                    }else if(val.value.indexOf('#') !== -1){
+                        val.value = val.value + '&v=' + md5Mapping[img];
+                    }else{
+                        val.value = val.value + '?v=' + md5Mapping[img];
+                    }
                 }else{
-                    var ext = path.extname(val.value);
-                    val.value = val.value.replace(ext, '-' + md5Mapping[img] + ext);
+                    var ext;
+                    if(val.value.indexOf('?') !== -1){
+                        arr = val.value.split('?');
+                        ext = path.extname(arr[0]);
+                        val.value = arr[0].replace(ext, '-' + md5Mapping[img] + ext) + '?' + arr[1];
+                    }else if(val.value.indexOf('#') !== -1){
+                        arr = val.value.split('#');
+                        ext = path.extname(arr[0]);
+                        val.value = arr[0].replace(ext, '-' + md5Mapping[img] + ext) + '#' + arr[1];
+                    }else{
+                        ext = path.extname(val.value);
+                        val.value = val.value.replace(ext, '-' + md5Mapping[img] + ext);
+                    }
                 }
             }
             
