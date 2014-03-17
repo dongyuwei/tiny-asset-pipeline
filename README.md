@@ -20,7 +20,7 @@ features:
 tips:
 ======
 1. all *.js , *.less * and *.css will be processed.
-2. for __partials files__: any file(or directory) start with `_ `or `.` will be ignorged(does not been processed), such as `_sub.js` or `_partial.less` or `_child.css`.
+2. for __partials files__: any file(or directory) start with `_ `or `.` will be ignorged(does not been processed), such as `_sub.js` or `_partial.less` or `_child.css` or `_foobar_directory/`.
    
 usage:
 =====
