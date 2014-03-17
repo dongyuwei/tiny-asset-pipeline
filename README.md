@@ -15,6 +15,12 @@ features:
 4. default will rewrite asset file name(append md5 hash to name,such as `foo-1d5a631226eed334.js`), you can prevent it by  pass the `-noRewriteFileName` option.
 5. all other assets, such as images and fonts, are copied and renamed to destination directoty. All reference urls of images and fonts in the .less(.css) are renamed automatically(such as `url(icon-update-3da2da84f7287796.png)` or `url(icon-update.png?v=3da2da84f7287796)` if given the `-noRewriteFileName` option ).
 6. a **md5_mapping.json** will be generated under the root of destination directoty, you can set the `-mappingFile` option to config the file path and name.
+
+
+tips:
+======
+1. all *.js , *.less * and *.css will be processed.
+2. for __partials files__: any file(or directory) start with `_ `or `.` will be ignorged(does not been processed), such as `_sub.js` or `_partial.less` or `_child.css`.
    
 usage:
 =====
