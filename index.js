@@ -17,7 +17,7 @@ var conf = require("argsparser").parse();
 function release(conf){
     function showUsage() {
         //default will rewrite static file(.js, .css, img,fonts)'s name 
-        console.error('Usage: node index.js  -from sourceDirectoty -to destinationDirectoty [-mappingFile /tmp/md5_mapping.json] [-verbose or -v] [-noRewriteFileName]');
+        console.error('Usage: node index.js  -from sourceDirectoty -to destinationDirectoty [-mappingFile /tmp/md5_mapping.json] [-verbose or -v]');
         process.exit(1);
     }
 
