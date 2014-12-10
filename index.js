@@ -3,7 +3,6 @@
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
-var log = require('./lib/tools/log');
 var walk = require('./lib/tools/dirWalker');
 
 var pkgJs = require('./lib/js/combineAll');
