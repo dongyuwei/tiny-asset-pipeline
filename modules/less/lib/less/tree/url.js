@@ -58,28 +58,18 @@
                 val.value = relative(config['_root_less_'], this.env.filename, val.value);
             }
             if(md5Mapping[img]){
-                if(config.noRewriteFileName){
-                    if(val.value.indexOf('?') !== -1){
-                        val.value = val.value + '&v=' + md5Mapping[img];
-                    }else if(val.value.indexOf('#') !== -1){
-                        val.value = val.value + '&v=' + md5Mapping[img];
-                    }else{
-                        val.value = val.value + '?v=' + md5Mapping[img];
-                    }
+                var ext;
+                if(val.value.indexOf('?') !== -1){
+                    arr = val.value.split('?');
+                    ext = path.extname(arr[0]);
+                    val.value = arr[0].replace(ext, '-' + md5Mapping[img] + ext) + '?' + arr[1];
+                }else if(val.value.indexOf('#') !== -1){
+                    arr = val.value.split('#');
+                    ext = path.extname(arr[0]);
+                    val.value = arr[0].replace(ext, '-' + md5Mapping[img] + ext) + '#' + arr[1];
                 }else{
-                    var ext;
-                    if(val.value.indexOf('?') !== -1){
-                        arr = val.value.split('?');
-                        ext = path.extname(arr[0]);
-                        val.value = arr[0].replace(ext, '-' + md5Mapping[img] + ext) + '?' + arr[1];
-                    }else if(val.value.indexOf('#') !== -1){
-                        arr = val.value.split('#');
-                        ext = path.extname(arr[0]);
-                        val.value = arr[0].replace(ext, '-' + md5Mapping[img] + ext) + '#' + arr[1];
-                    }else{
-                        ext = path.extname(val.value);
-                        val.value = val.value.replace(ext, '-' + md5Mapping[img] + ext);
-                    }
+                    ext = path.extname(val.value);
+                    val.value = val.value.replace(ext, '-' + md5Mapping[img] + ext);
                 }
             }
             
