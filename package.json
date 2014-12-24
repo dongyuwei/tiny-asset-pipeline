@@ -17,7 +17,7 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "version": "1.2.4",
+  "version": "1.2.5",
   "licenses": [
     {
       "type": "Apache v2",
