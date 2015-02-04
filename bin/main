@@ -16,7 +16,7 @@ if(process.argv.length === 2){
 
 var port = parseInt(conf['-port'], 10) || 8888;
 var tmpPath = path.join(os.tmpDir(), port.toString());
-var pidPath = path.join(os.tmpDir(), port.toString(), '.pid');
+var pidPath = path.join(os.tmpDir(), port.toString() + '.pid');
 var stdout = tmpPath + '_stdout.log', stderr = tmpPath + '_stderr.log';
 if(conf['-start'] || conf['-restart']){
     kill();
@@ -44,7 +44,7 @@ function kill(){
                 fs.unlinkSync(stdout);
                 fs.unlinkSync(stderr);
             }catch(e){
-                console.error('failed to stop tiny-asset-pipeline HTTP server', e, pidPath);
+                console.error('failed to stop tiny-asset-pipeline HTTP server');
             }
         }
     }
