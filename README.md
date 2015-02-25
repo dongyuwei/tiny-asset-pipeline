@@ -9,7 +9,7 @@ Install:
 
 Features:
 ======
-1. **Dependency management for Less(or CSS)__:** support mixture @import of .css and .less. All *.css file is processed same as Less file(merge all @import recursively, compile it by lessc). It use the latest(v2.3.1) [Less preprocessor](https://github.com/less/less.js).
+1. **Dependency management for Less(or CSS):** support mixture @import of .css and .less. All *.css file is processed same as Less file(merge all @import recursively, compile it by lessc). It use the latest(v2.3.1) [Less preprocessor](https://github.com/less/less.js).
 2. **Dependency management for __JavaScript__:** using `require("../subDir/foo.js")` to require foo.js. Note it's not a CMD or AMD package manager, it just loads/merge the required Javascript file. It use [UglifyJS](https://github.com/mishoo/UglifyJS) to process the javascripts.
 3. It integrated with [__autoprefixer__](https://github.com/postcss/autoprefixer). So you can write your CSS rules without vendor prefixes (in fact, forget about them entirely).
 4. **Note:** both `require`(for js) and `@import`(for css and less) are using __relative path__, such as `@import ../plugin/foo.css`. Images and fonts also use relative path.
