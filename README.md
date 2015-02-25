@@ -13,8 +13,8 @@ Features:
 2. **Dependency management for JavaScript:** using `require("../subDir/foo.js")` to require foo.js. Note it's not a CMD or AMD package manager, it just loads/merge the required Javascript file. It use [UglifyJS](https://github.com/mishoo/UglifyJS) to process the javascripts.
 3. It integrated with [autoprefixer](https://github.com/postcss/autoprefixer). So you can write your CSS rules without vendor prefixes (in fact, forget about them entirely).
 4. **Note:** both `require`(for js) and `@import`(for css and less) are using relative path, such as `@import ../plugin/foo.css`. Images and fonts also use relative path.
-5. Default will rewrite asset file name(append md5 hash to name,such as `foo-1d5a631226eed334.js`).
-6. All other assets, such as images and fonts, are copied and renamed to destination directoty. All reference urls of images and fonts in the .less(.css) are renamed automatically(such as `url(icon-update-3da2da84f7287796.png)`).
+5. It will rename asset(append md5 hash to name,such as `foo-1d5a631226eed334.js`).
+6. All other assets except js/css/less, such as images and fonts, are copied and renamed to deploy directoty. All reference urls of images and fonts in the *.less/*.css are renamed automatically(such as `url(icon-update-3da2da84f7287796.png)`).
 7. A **md5_mapping.json** will be generated under the root of destination directoty, you can set the `-mappingFile` option to config the file path and name.
 
 
