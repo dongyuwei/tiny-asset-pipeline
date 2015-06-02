@@ -22,7 +22,14 @@ if(conf['-start'] || conf['-restart']){
     kill();
     console.log(">>>tiny-asset-pipeline's stdout log: ", stdout);
     console.log(">>>tiny-asset-pipeline's stderr log: ", stderr);
-    var child = daemon.daemon(path.resolve(__dirname,'..','lib','server','httpd.js'), ['-port',port,'-root',conf['-root']],{
+    var config = [];
+    for(var key in conf){
+        if(conf.hasOwnProperty(key)){
+            config.push(key);
+            config.push(conf[key]);
+        }
+    }
+    var child = daemon.daemon(path.resolve(__dirname,'..','lib','server','httpd.js'), config, {
         stdout : fs.openSync(stdout, 'w'),
         stderr : fs.openSync(stderr, 'w')
     });
