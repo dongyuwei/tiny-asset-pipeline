@@ -17,7 +17,7 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "version": "1.3.3",
+  "version": "1.3.4",
   "licenses": [
     {
       "type": "Apache v2",
@@ -31,7 +31,6 @@
     "express": "3.0.3",
     "less": "2.3.1",
     "mkdirp": "0.3.4",
-    "react-tools": "0.13.2",
     "uglify-js": "1.3.4"
   }
 }

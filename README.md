@@ -17,10 +17,6 @@ Features:
 6. All other assets except js/css/less, such as images and fonts, are copied and renamed to deploy directoty. All reference urls of images and fonts in the *.less/*.css are renamed automatically(such as `url(icon-update-3da2da84f7287796.png)`).
 7. A **md5_mapping.json** will be generated under the root of destination directoty, you can set the `-mappingFile` option to config the file path and name.
 
-New Feature:
-==========
-1. Supports facebook's [Reactjs](https://facebook.github.io/react/) . It will transform all `*.jsx` or `*.jsx.js` file to normal(vanilla) js, and then do the file-merging and file-compression and md5 hash version work...
-
 
 Tips:
 ======
