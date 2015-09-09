@@ -8,7 +8,7 @@ var release = require('../index.js');
 var conf = require("argsparser").parse();
 
 if(process.argv.length === 2){
-    console.error('#package project#: tiny-asset-pipeline -from sourceDirectoty -to destinationDirectoty [-mappingFile /tmp/md5_mapping.json] [-verbose or -v]');
+    console.error('#package project#: tiny-asset-pipeline -from sourceDirectoty -to destinationDirectoty [-mappingFile /tmp/md5_mapping.json] [-browsers "> 1%, last 2 version"] [-verbose or -v]');
     console.error('#start    server#: tiny-asset-pipeline -start  [-port 8888] [-root assetsRootDirectoty]');
     console.error('#stop     server#: tiny-asset-pipeline -stop');
     process.exit(1);
