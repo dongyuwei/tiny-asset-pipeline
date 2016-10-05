@@ -4,6 +4,9 @@
   "bin": {
     "tiny-asset-pipeline": "./bin/main"
   },
+  "scripts": {
+    "test": "node index.js -from tests/commonjs/ -to tests/tmp && node tests/tmp/entry.js"
+  },
   "description": "tiny-asset-pipeline is a node library for compiling and serving web assets. It features dependency management for JavaScript and CSS assets, as well as Less.",
   "author": {
     "name": "dongyuwei",

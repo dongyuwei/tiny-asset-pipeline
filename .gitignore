@@ -3,4 +3,5 @@
 node_modules
 *.pid
 test/
+tests/tmp/
 
