@@ -83,7 +83,7 @@ function publish(conf,from,to) {
 }
 
 module.exports = release;
-if(conf.node === __filename){
+if(conf.node === __filename || process.argv[1] === __filename){
 	release(conf);
     process.exit(0);
 }
