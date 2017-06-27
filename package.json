@@ -20,7 +20,7 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "version": "1.4.0",
+  "version": "1.4.1",
   "licenses": [
     {
       "type": "Apache v2",
@@ -30,7 +30,7 @@
   "dependencies": {
     "argsparser": "0.0.6",
     "autoprefixer": "4.0.0",
-    "daemon": "1.1.0",
+    "daemon": "github:zipang/daemon.node#48d0977c26fb3a6a44ae99aae3471b9d5a761085",
     "express": "3.0.3",
     "less": "2.3.1",
     "mkdirp": "0.3.4",
